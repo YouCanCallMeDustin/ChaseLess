@@ -73,7 +73,7 @@ export default function TemplateSettingsClient({ initialTemplates }: { initialTe
                             value={friendly}
                             onChange={(e) => setFriendly(e.target.value)}
                             rows={8}
-                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y"
+                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y text-slate-900 bg-white"
                         />
                     </div>
 
@@ -83,7 +83,7 @@ export default function TemplateSettingsClient({ initialTemplates }: { initialTe
                             value={firm}
                             onChange={(e) => setFirm(e.target.value)}
                             rows={8}
-                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y"
+                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y text-slate-900 bg-white"
                         />
                     </div>
 
@@ -93,7 +93,7 @@ export default function TemplateSettingsClient({ initialTemplates }: { initialTe
                             value={final}
                             onChange={(e) => setFinal(e.target.value)}
                             rows={8}
-                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y"
+                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y text-slate-900 bg-white"
                         />
                     </div>
 
@@ -103,7 +103,7 @@ export default function TemplateSettingsClient({ initialTemplates }: { initialTe
                             value={demand}
                             onChange={(e) => setDemand(e.target.value)}
                             rows={8}
-                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y"
+                            className="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-blue-600 transition font-mono text-sm resize-y text-slate-900 bg-white"
                         />
                     </div>
 

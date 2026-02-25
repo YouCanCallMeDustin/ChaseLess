@@ -73,7 +73,7 @@ export default function InvoiceDetailClient({ invoice, templates }: { invoice: a
 
     return (
         <div className="max-w-4xl mx-auto space-y-6">
-            <Link href="/invoices" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition">
+            <Link href="/invoices" className="inline-flex items-center gap-2 text-sm text-slate-700 hover:text-slate-900 transition">
                 <ArrowLeft className="w-4 h-4" /> Back to invoices
             </Link>
 
@@ -85,7 +85,7 @@ export default function InvoiceDetailClient({ invoice, templates }: { invoice: a
                 <div className="flex items-center gap-4">
                     <div className="text-right">
                         <p className="text-2xl font-bold text-slate-900">{formatCurrency(invoice.amountCents)}</p>
-                        <p className="text-sm text-slate-500">Due {formatDate(new Date(invoice.dueDate))}</p>
+                        <p className="text-sm text-slate-700">Due {formatDate(new Date(invoice.dueDate))}</p>
                     </div>
                     <button
                         onClick={toggleStatus}
@@ -109,7 +109,7 @@ export default function InvoiceDetailClient({ invoice, templates }: { invoice: a
                             const status = getStageStatus(stage.id);
                             return (
                                 <div key={stage.id} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-100 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-100 text-slate-700 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                                         {status.sent ? <CheckCircle2 className="w-5 h-5 text-emerald-500" /> : <Clock className="w-5 h-5" />}
                                     </div>
                                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-5 rounded-xl border shadow-sm">
@@ -154,17 +154,17 @@ export default function InvoiceDetailClient({ invoice, templates }: { invoice: a
 
                     <div className="bg-white rounded-xl shadow-sm border p-4">
                         {invoice.commLogs.length === 0 ? (
-                            <p className="text-sm text-slate-500 text-center py-6">No communications logged yet.</p>
+                            <p className="text-sm text-slate-700 text-center py-6">No communications logged yet.</p>
                         ) : (
                             <ul className="space-y-4">
                                 {invoice.commLogs.map((log: any) => (
                                     <li key={log.id} className="border-b last:border-0 pb-4 last:pb-0">
                                         <div className="flex items-center justify-between mb-1">
                                             <span className="font-semibold text-sm capitalize text-slate-900">{log.stage.replace('_', ' ')}</span>
-                                            <span className="text-xs text-slate-500">{formatDate(new Date(log.sentAt))}</span>
+                                            <span className="text-xs text-slate-700">{formatDate(new Date(log.sentAt))}</span>
                                         </div>
                                         <p className="text-xs text-slate-600">Method: {log.channel.replace('_', ' ')}</p>
-                                        {log.recipientEmail && <p className="text-xs text-slate-500">To: {log.recipientEmail}</p>}
+                                        {log.recipientEmail && <p className="text-xs text-slate-700">To: {log.recipientEmail}</p>}
                                     </li>
                                 ))}
                             </ul>

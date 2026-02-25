@@ -73,7 +73,7 @@ export default function ClientEditForm({ client }: { client: any }) {
 
     return (
         <div className="max-w-2xl mx-auto">
-            <Link href="/clients" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 mb-6 transition">
+            <Link href="/clients" className="inline-flex items-center gap-2 text-sm text-slate-700 hover:text-slate-900 mb-6 transition">
                 <ArrowLeft className="w-4 h-4" /> Back to clients
             </Link>
 
@@ -95,12 +95,11 @@ export default function ClientEditForm({ client }: { client: any }) {
                 <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
                         <label className="block text-sm font-medium text-slate-700 mb-1">Company / Contact Name *</label>
-                        <input
-                            name="name"
+                        <input name="name"
                             type="text"
                             required
                             defaultValue={client.name}
-                            className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition"
+                            className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition text-slate-900 bg-white"
                             placeholder="Acme Corp or John Doe"
                         />
                     </div>
@@ -108,21 +107,19 @@ export default function ClientEditForm({ client }: { client: any }) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-                            <input
-                                name="email"
+                            <input name="email"
                                 type="email"
                                 defaultValue={client.email || ""}
-                                className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition"
+                                className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition text-slate-900 bg-white"
                                 placeholder="billing@acme.com"
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
-                            <input
-                                name="phone"
+                            <input name="phone"
                                 type="tel"
                                 defaultValue={client.phone || ""}
-                                className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition"
+                                className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition text-slate-900 bg-white"
                                 placeholder="(555) 123-4567"
                             />
                         </div>
@@ -130,11 +127,10 @@ export default function ClientEditForm({ client }: { client: any }) {
 
                     <div>
                         <label className="block text-sm font-medium text-slate-700 mb-1">Private Notes</label>
-                        <textarea
-                            name="notes"
+                        <textarea name="notes"
                             rows={4}
                             defaultValue={client.notes || ""}
-                            className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition resize-none"
+                            className="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-600 transition resize-none text-slate-900 bg-white"
                             placeholder="Internal notes about this client..."
                         ></textarea>
                     </div>

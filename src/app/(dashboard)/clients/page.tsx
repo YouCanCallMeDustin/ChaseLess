@@ -36,8 +36,8 @@ export default async function ClientsPage() {
 
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
                 {clients.length === 0 ? (
-                    <div className="p-12 text-center text-slate-500 flex flex-col items-center">
-                        <User className="w-12 h-12 mb-4 text-slate-300" />
+                    <div className="p-12 text-center text-slate-700 flex flex-col items-center">
+                        <User className="w-12 h-12 mb-4 text-slate-500" />
                         <h3 className="text-lg font-medium text-slate-900 mb-1">No clients yet</h3>
                         <p className="mb-4 text-sm">Add your first client to start tracking invoices.</p>
                         <Link
@@ -51,7 +51,7 @@ export default async function ClientsPage() {
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="bg-slate-50 border-b text-sm text-slate-500 font-medium">
+                                <tr className="bg-slate-50 border-b text-sm text-slate-700 font-medium">
                                     <th className="p-4">Name</th>
                                     <th className="p-4">Email</th>
                                     <th className="p-4">Phone</th>

@@ -42,7 +42,7 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <footer className="py-6 text-center text-slate-500 text-sm border-t bg-white">
+      <footer className="py-6 text-center text-slate-700 text-sm border-t bg-white">
         &copy; {new Date().getFullYear()} ChaseLess. Stop Chasing Payments.
       </footer>
     </div>
