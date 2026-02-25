@@ -1,0 +1,76 @@
+===========================================================
+CHASELESS - DEFAULT TEMPLATE PACK (v0)
+===========================================================
+This is the standard set of templates provided to contractors.
+These are meant to be professional, non-confrontational but firm.
+
+TONE PRESET: Professional & Firm
+
+---
+STAGE 1: FRIENDLY REMINDER (Day 3 Overdue)
+Subject: Friendly Reminder: Invoice #[Invoice Number] is due
+
+Hi [Client First Name],
+
+Hope you're having a good week.
+
+Just sending a quick reminder that invoice #[Invoice Number] for [Amount] was due on [Due Date]. 
+
+We know things can get busy! You can find the invoice details attached or referenced below. If you've already sent payment, please disregard this note.
+
+Thank you for your business!
+
+Best regards,
+[Contractor Name]
+[Company Name]
+
+---
+STAGE 2: FIRM REMINDER (Day 7 Overdue)
+Subject: Payment Overdue: Invoice #[Invoice Number]
+
+Hi [Client First Name],
+
+This is a follow-up regarding invoice #[Invoice Number] for [Amount], which is now a week overdue. 
+
+Please arrange for payment at your earliest convenience to ensure your account remains in good standing. If there is an issue with the invoice or you need to discuss payment options, please let us know immediately so we can help.
+
+We look forward to receiving your payment.
+
+Thank you,
+[Contractor Name]
+[Company Name]
+
+---
+STAGE 3: FINAL NOTICE (Day 14 Overdue)
+Subject: FINAL NOTICE: Outstanding Invoice #[Invoice Number]
+
+Hi [Client First Name],
+
+We have not yet received payment for invoice #[Invoice Number] in the amount of [Amount], which was due on [Due Date]. We have reached out several times regarding this balance.
+
+Please consider this our final request for voluntary payment before we are forced to escalate this matter. Prompt payment by [Date + 3 Days] will resolve this issue.
+
+Please remit payment immediately or contact us today.
+
+Regards,
+[Contractor Name]
+[Company Name]
+
+---
+STAGE 4: DEMAND LETTER DRAFT (Day 30 Overdue)
+Subject: DEMAND FOR PAYMENT - [Company Name]
+
+Dear [Client Full Name],
+
+This letter serves as a formal demand for payment in the amount of [Amount] for services rendered as detailed in invoice #[Invoice Number]. 
+
+Despite our repeated previous requests on [Day 3 Date], [Day 7 Date], and [Day 14 Date], we have not received payment.
+
+If we do not receive the full amount of [Amount] by [Date + 5 Days], we reserve the right to pursue all available legal remedies to recover the debt, which may include reporting to credit bureaus, engaging a collections agency, or taking legal action.
+
+To avoid these measures, please submit payment immediately.
+
+Sincerely,
+[Contractor Name]
+[Company Name]
+[Contact Information]

@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Target Neon Postgres
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  createdAt     DateTime  @default(now())
+  
+  companies     Company[]
+}
+
+model Company {
+  id            String    @id @default(cuid())
+  userId        String
+  name          String
+  logoUrl       String?
+  replyToEmail  String?   // Make optional until set up properly
+  createdAt     DateTime  @default(now())
+
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clients       Client[]
+  invoices      Invoice[]
+  template      Template? // 1-to-1 relation
+}
+
+model Client {
+  id            String    @id @default(cuid())
+  companyId     String
+  name          String
+  email         String?
+  phone         String?
+  notes         String?
+  createdAt     DateTime  @default(now())
+
+  company       Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoices      Invoice[]
+}
+
+model Invoice {
+  id                 String    @id @default(cuid())
+  companyId          String
+  clientId           String
+  amountCents        Int
+  currency           String    @default("USD")
+  description        String
+  dueDate            DateTime
+  termsText          String?
+  status             String    @default("pending") // pending, overdue, paid
+  automationEnabled  Boolean   @default(true)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  company            Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  client             Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  commLogs           CommLog[]
+}
+
+model Template {
+  id            String    @id @default(cuid())
+  companyId     String    @unique
+  friendlyText  String    @db.Text
+  firmText      String    @db.Text
+  finalText     String    @db.Text
+  demandText    String    @db.Text
+  toneSelected  String    @default("professional") // professional, firm, direct
+
+  company       Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+}
+
+model CommLog {
+  id              String    @id @default(cuid())
+  invoiceId       String
+  stage           String    // friendly, firm, final, demand, manual_note
+  channel         String    // manual_copy, manual_sent, email_auto
+  sentAt          DateTime  @default(now())
+  recipientEmail  String?
+  notes           String?
+  createdAt       DateTime  @default(now())
+
+  invoice         Invoice   @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+}

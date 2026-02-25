@@ -1,0 +1,231 @@
+PROJECT:
+ChaseLess
+
+TAGLINE:
+Stop Chasing Payments.
+
+GOAL:
+Ship a high-quality, zero-budget MVP in 30–45 days that proves demand.
+Start with a “Payment Discipline Kit” (v0), then add automation + monetization in later versions.
+
+LEAN STACK (MVP):
+- Repo: GitHub
+- Hosting: Cloudflare Pages (web app)
+- DB: Neon Postgres
+- Email (v0.1+): Resend
+- Payments (v0.3+): Stripe
+
+PRODUCT POSITIONING:
+ChaseLess is NOT invoicing/accounting/CRM.
+It is a payment discipline layer:
+- keeps the contractor consistent
+- removes awkward follow-ups
+- creates a professional escalation timeline
+- logs actions for leverage
+
+TARGET USERS:
+Small service contractors (1–10 employees):
+landscaping, snow removal, pressure washing, mobile services, residential trades.
+
+CORE PROBLEM:
+Contractors lose time and money chasing late payments.
+They want a simple system that:
+- tells them what to send and when
+- keeps a timeline
+- makes follow-up consistent and professional
+
+===========================================================
+VERSION PLAN
+===========================================================
+
+v0 (ZERO-BUDGET MVP) — “FOLLOW-UP KIT”
+NO: auto email sending, stripe, pdf packet, integrations
+YES: discipline workflow + templates + logging
+
+FEATURES:
+1) AUTH
+- Email/password login
+- Basic company profile: company name, logo(optional), reply-to email
+
+2) CLIENTS
+- Create/edit clients: name, email, phone(optional), notes
+
+3) INVOICES (manual entry only)
+- Create invoice record:
+  - client
+  - amount
+  - due date
+  - brief description
+  - payment terms (short text)
+  - status: Pending | Overdue | Paid
+- Mark Paid / Undo Paid
+
+4) ESCALATION TIMELINE (manual discipline)
+- For each overdue invoice, show stages:
+  - Day 3 Friendly Reminder
+  - Day 7 Firm Reminder
+  - Day 14 Final Notice
+  - Day 30 Demand Letter Draft
+- Each stage has:
+  - “Copy message” button
+  - “Mark as sent” button (creates a log entry with timestamp)
+  - editable template per contractor account
+
+5) TEMPLATE SYSTEM
+- Contractor can edit templates once:
+  - Friendly, Firm, Final, Demand
+- Tone presets: Professional | Firm | Direct (pre-filled templates)
+
+6) COMMUNICATION LOG
+- For each invoice:
+  - entries: stage, date/time marked sent, optional notes
+- Export invoice page to print (browser print is fine in v0)
+
+SCREENS (v0):
+- Landing page (simple)
+- Auth: Login / Signup
+- Dashboard: counts (Overdue, Pending, Paid, Total Outstanding)
+- Clients: list + add/edit
+- Invoices: list + add/edit
+- Invoice Detail:
+  - status + due date + amount
+  - escalation timeline + copy + mark sent
+  - communication log
+- Templates Settings: edit templates + tone presets
+
+SUCCESS METRICS (v0):
+- 10 beta users invited
+- 5 users create invoices
+- 3 users mark at least one reminder as sent
+If users don’t use the timeline, the product is wrong or messaging is wrong.
+
+===========================================================
+v0.1 — “AUTO REMINDERS” (adds Resend)
+===========================================================
+
+GOAL:
+Real automated reminders, but still minimal product.
+
+ADD:
+- Invoice-level toggle:
+  - Automation ON by default
+  - Pause / Resume anytime
+- Background scheduler:
+  - daily job checks overdue invoices
+  - sends the appropriate email for Day 3/7/14/30 if not already sent
+- Email sending via Resend
+- Send-from:
+  - either a verified domain (later)
+  - or a shared sending domain initially (beta)
+- Safety:
+  - contractor can disable automation per invoice
+  - contractor can disable all automation globally
+
+EMAIL CONTENT:
+- Includes: invoice summary + due date + amount + short terms + contact info
+- No legal threats; keep templates professional and factual
+
+LOGGING:
+- Every send logged to Communication Log with:
+  - stage
+  - sent timestamp
+  - recipient email
+  - provider message id (optional)
+
+===========================================================
+v0.2 — “RECOVERY PACKET PDF”
+===========================================================
+
+ADD:
+- One-click PDF generation for 30+ days overdue:
+  - invoice summary
+  - terms
+  - timeline
+  - communication log
+  - demand letter draft
+Export as a single PDF.
+
+===========================================================
+v0.3 — “MONETIZATION”
+===========================================================
+
+ADD:
+- Stripe subscriptions
+- Pricing:
+  - Beta: $19/mo (first 25 users locked-in)
+  - Standard later: $29–$39/mo
+- Simple plan gating:
+  - Free trial: 14 days (optional)
+  - Paid required for auto email + PDF packet
+
+===========================================================
+DATA MODEL (INITIAL)
+===========================================================
+
+users:
+- id, email, password_hash, created_at
+
+companies:
+- id, user_id, name, logo_url(optional), reply_to_email, created_at
+
+clients:
+- id, company_id, name, email, phone, notes, created_at
+
+invoices:
+- id, company_id, client_id
+- amount_cents
+- currency
+- description
+- due_date
+- terms_text
+- status (pending/overdue/paid)
+- automation_enabled (bool)
+- created_at, updated_at
+
+templates:
+- id, company_id
+- friendly_text, firm_text, final_text, demand_text
+- tone_selected (professional/firm/direct)
+
+comm_logs:
+- id, invoice_id
+- stage (friendly/firm/final/demand/manual_note)
+- channel (manual_copy/manual_sent/email_auto)
+- sent_at
+- recipient_email
+- notes
+- created_at
+
+===========================================================
+BUILD ORDER (DON’T DRIFT)
+===========================================================
+
+Week 1:
+- Auth + DB schema + dashboard shell
+- Clients CRUD
+- Invoices CRUD
+
+Week 2:
+- Invoice detail page
+- Timeline UI
+- Template editor
+- Communication log (mark sent)
+
+Week 3:
+- Polish UX + mobile-first layout
+- Landing page copy (simple)
+- Invite 5–10 beta users
+
+Then:
+- Only after real usage, start v0.1 (Resend auto-email)
+
+NON-GOALS (DO NOT BUILD IN MVP):
+- QuickBooks integrations
+- Payment processing / “pay now” links
+- SMS
+- Full invoicing generation
+- Job scheduling, CRM, dispatch
+
+CORE PRINCIPLE:
+Ship the smallest version that proves contractors will follow a structured escalation timeline.
+Everything else gets built only after users demonstrate behavior.
